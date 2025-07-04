@@ -1,0 +1,70 @@
+{
+    "name": "laradrax/text-mask",
+    "description": "A TextMask field for Laravel Nova.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "textmask"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "illuminate/support": "^12.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/nova": "^5.0",
+        "laravel/nova-devtool": "^1.7",
+        "laravel/pint": "^1.23",
+        "rector/rector": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laradrax\\TextMask\\": "src/"
+        }
+    },
+    "scripts": {
+        "fix:lint": [
+            "@php vendor/bin/pint"
+        ],
+        "fix:rector": [
+            "@php vendor/bin/rector process"
+        ],
+        "fix": [
+            "@fix:lint",
+            "@fix:rector"
+        ],
+        "test:rector": [
+            "@php vendor/bin/rector process --dry-run"
+        ],
+        "test:stan": [
+            "@php vendor/bin/phpstan analyse --memory-limit=512M"
+        ],
+        "test:lint": [
+            "@php vendor/bin/pint --test"
+        ],
+        "test": [
+            "@test:rector",
+            "@test:stan",
+            "@test:lint"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laradrax\\TextMask\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ]
+}
