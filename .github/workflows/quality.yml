@@ -43,7 +43,7 @@ jobs:
           npm install
 
       - name: Run NPM Build
-        run: npm run prd
+        run: npm run prod
 
       - name: Run Linter
         run: composer test:lint
