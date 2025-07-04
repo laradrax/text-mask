@@ -106,7 +106,7 @@ export default {
          */
         fill(formData) {
             // If the current field is not a mask, it's a regular text field.
-            if (this.currentField.mask === null || this.currentField.mask === undefined || this.currentField.mask === "") {
+            if (!this.field.mask) {
                 formData.append(this.field.attribute, this.value);
                 return;
             }
@@ -119,8 +119,8 @@ export default {
             let valueToFill = this.value || "";
 
             // Determine if the raw (unmasked) value should be sent.
-            // The 'raw' meta defaults to true if not explicitly set to false in PHP.
-            const sendRawValue = this.currentField?.raw ?? true;
+            // The 'raw' meta defaults to false if not explicitly set to false in PHP.
+            const sendRawValue = this.field?.raw ?? false;
 
             // Use the unmasked value if 'raw' is true AND an unmasked value exists from the mask event.
             if (sendRawValue && typeof this.eventDetail.unmasked === "string") {

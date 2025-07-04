@@ -49,6 +49,10 @@ class TextMask extends Field implements FilterableField
      */
     public function mask(Stringable|string|null $mask): TextMask
     {
+        if ($mask !== null) {
+            $mask = str($mask)->trim();
+        }
+
         return $this->withMeta([
             __FUNCTION__ => $mask,
         ]);
@@ -70,7 +74,7 @@ class TextMask extends Field implements FilterableField
      * Eager mode will show static characters before you type them,
      * e.g. when you type `1`, eager mask `#-#` will show `1-` and non-eager will show `1`
      */
-    public function eager(bool $eager = false): TextMask
+    public function eager(bool $eager = true): TextMask
     {
         return $this->withMeta([
             __FUNCTION__ => $eager,
