@@ -74,7 +74,7 @@ class TextMask extends Field implements FilterableField
      * Eager mode will show static characters before you type them,
      * e.g. when you type `1`, eager mask `#-#` will show `1-` and non-eager will show `1`
      */
-    public function eager(bool $eager = true): TextMask
+    public function eager(bool $eager = false): TextMask
     {
         return $this->withMeta([
             __FUNCTION__ => $eager,
@@ -88,6 +88,14 @@ class TextMask extends Field implements FilterableField
     {
         return $this->withMeta([
             __FUNCTION__ => $reversed,
+        ]);
+    }
+
+    /**  */
+    public function fillRequired(bool $required = true): TextMask
+    {
+        return $this->withMeta([
+            __FUNCTION__ => $required,
         ]);
     }
 }

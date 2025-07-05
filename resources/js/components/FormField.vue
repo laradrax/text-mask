@@ -101,33 +101,39 @@ export default {
         },
 
         /**
+         * Record a validation error for the field.
+         * @param {string} message The validation error message.
+         */
+        recordError(message) {
+            this.errors.record({[this.validationKey]: [message]});
+        },
+
+        /**
          * Fill the given FormData object with the field's internal value.
          * Called by Nova when submitting the form.
          */
         fill(formData) {
-            // If the current field is not a mask, it's a regular text field.
-            if (this.currentField.mask === null || this.currentField.mask === undefined || this.currentField.mask === "") {
-                formData.append(this.field.attribute, this.value);
-                return;
+            if (this.currentField.fillRequired && this.currentField.mask && !this.eventDetail.completed) {
+                const message = this.__('The mask is not completed.');
+                this.recordError(message);
+                throw {
+                    field: this.field.attribute,
+                    message: message,
+                };
             }
 
-            // If the mask is not completed, don't fill the FormData.
-            if (!this.eventDetail.completed) {
-                return;
-            }
-
-            let valueToFill = this.value || "";
+            let valueToFill = this.value || '';
 
             // Determine if the raw (unmasked) value should be sent.
             // The 'raw' meta defaults to false if not explicitly set to false in PHP.
-            const sendRawValue = this.currentField?.raw ?? false;
+            const sendRawValue = this.currentField.raw ?? false;
 
             // Use the unmasked value if 'raw' is true AND an unmasked value exists from the mask event.
             if (sendRawValue && typeof this.eventDetail.unmasked === "string") {
                 valueToFill = this.eventDetail.unmasked;
             }
 
-            formData.append(this.field.attribute, valueToFill);
+            this.fillIfVisible(formData, this.field.attribute, valueToFill);
         },
     },
 };

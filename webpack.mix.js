@@ -7,6 +7,5 @@ mix
   .setPublicPath('dist')
   .js('resources/js/field.js', 'js')
   .vue({ version: 3 })
-  .css('resources/css/field.css', 'css')
-  .nova('cadrax/text-mask')
+  .nova('laradrax/text-mask')
   .version()
