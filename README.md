@@ -15,7 +15,7 @@ composer require laradrax/text-mask
 Use the `TextMask` field in your Nova resources:
 
 ```php
-use Laradrax\TextMask;
+use Laradrax\Fields\TextMask;
 
 public function fields(NovaRequest $request)
 {

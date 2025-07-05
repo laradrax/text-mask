@@ -1,6 +1,6 @@
 <?php
 
-namespace Laradrax\TextMask;
+namespace Laradrax\Fields;
 
 use Illuminate\Support\Stringable;
 use Laravel\Nova\Contracts\FilterableField;
@@ -65,9 +65,9 @@ class TextMask extends Field implements FilterableField
      * Set the mask pattern for the field.
      *
      * Supports Maska mask patterns:
-     * - # (digit 0-9)
-     * - @ (letter a-z, A-Z)
-     * - * (alphanumeric)
+     * - `#` (digit 0-9)
+     * - `@` (letter a-z, A-Z)
+     * - `*` (alphanumeric)
      *
      * Can also accept JSON arrays for dynamic masks.
      *
@@ -91,7 +91,7 @@ class TextMask extends Field implements FilterableField
      * Allows defining custom token patterns beyond the default Maska tokens.
      * Each token should define a 'pattern' (regex) and optionally 'optional' (boolean).
      *
-     * @param  array<string, array<string, string|bool>>  $tokens  Custom tokens in format ['X' => ['pattern' => '\d', 'optional' => false]]
+     * @param  array<string, array<string, string|bool>>  $tokens  Custom tokens in format `['X' => ['pattern' => '\d', 'optional' => false]]`
      * @return TextMask The field instance for method chaining
      */
     public function tokens(array $tokens): TextMask

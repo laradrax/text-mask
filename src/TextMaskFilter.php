@@ -1,6 +1,6 @@
 <?php
 
-namespace Laradrax\TextMask;
+namespace Laradrax\Fields;
 
 use Laravel\Nova\Fields\Filters\Filter;
 

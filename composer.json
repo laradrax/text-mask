@@ -4,6 +4,7 @@
     "keywords": [
         "laravel",
         "nova",
+        "field",
         "textmask"
     ],
     "license": "MIT",
@@ -20,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Laradrax\\TextMask\\": "src/"
+            "Laradrax\\Fields\\": "src/"
         }
     },
     "scripts": {
