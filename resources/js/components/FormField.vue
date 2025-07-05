@@ -114,7 +114,9 @@ export default {
          */
         fill(formData) {
             if (this.currentField.fillRequired && this.currentField.mask && !this.eventDetail.completed) {
-                const message = this.__('The :attribute field is incomplete');
+                const message = this.__('The :attribute field is incomplete', {
+                    attribute: this.field.name,
+                });
                 this.recordError(message);
                 throw {
                     field: this.field.attribute,
