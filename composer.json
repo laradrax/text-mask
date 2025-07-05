@@ -53,7 +53,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Laradrax\\TextMask\\FieldServiceProvider"
+                "Laradrax\\Fields\\FieldServiceProvider"
             ]
         }
     },
