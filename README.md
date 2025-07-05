@@ -57,12 +57,12 @@ TextMask::make('Product Code')
 
 ### Eager Mode
 
-Show static characters before typing (default: true):
+Show static characters before typing:
 
 ```php
 TextMask::make('Phone')
     ->mask('(###) ###-####')
-    ->eager(true) // Shows "(" immediately
+    ->eager() // Shows "(" immediately
 ```
 
 ### Reversed Mode
@@ -72,7 +72,7 @@ Useful for numeric inputs that grow backwards:
 ```php
 TextMask::make('Price')
     ->mask('$ #,##0.00')
-    ->reversed(true)
+    ->reversed()
 ```
 
 ### Raw Values
@@ -82,7 +82,7 @@ Send unmasked values to the server:
 ```php
 TextMask::make('Phone')
     ->mask('(###) ###-####')
-    ->raw(true) // Sends "1234567890" instead of "(123) 456-7890"
+    ->raw() // Sends "1234567890" instead of "(123) 456-7890"
 ```
 
 ### Fill Required
@@ -92,7 +92,7 @@ Validate that the mask is completely filled:
 ```php
 TextMask::make('Phone')
     ->mask('(###) ###-####')
-    ->fillRequired(true) // Throws validation error if incomplete
+    ->fillRequired() // Throws validation error if incomplete
 ```
 
 ## Mask Patterns

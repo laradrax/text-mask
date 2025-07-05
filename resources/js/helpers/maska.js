@@ -20,19 +20,12 @@ export function createMaskOptions(field) {
         options.tokens = tryParseJson(field.tokens)
     }
 
-    // Add eager option if provided, or default to true
-    options.eager = field.eager ?? true
-
-
-    // Add reversed option if provided
-    if (field.reversed) {
-        options.reversed = field.reversed
-    }
+    options.eager = !!field.eager
+    options.reversed = !!field.reversed
 
     // Return configured options
     return options;
 }
-
 
 /**
  * Attempts to parse a string as JSON.
