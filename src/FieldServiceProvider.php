@@ -16,6 +16,7 @@ class FieldServiceProvider extends ServiceProvider
         Nova::serving(function (ServingNova $event): void {
             Nova::mix('text-mask', __DIR__.'/../dist/mix-manifest.json');
         });
+        $this->loadJsonTranslationsFrom(__DIR__.'/../lang');
     }
 
     /**
